@@ -133,7 +133,7 @@ function AboutSection() {
     </>
   );
 
-  // Glow MOBILE 
+  // Glow MOBILE
   const PhotoTrapezoidBackgroundMobile = () => (
     <>
       {/* Outer Glow */}
@@ -386,10 +386,10 @@ function AboutSection() {
                   />
                   <div className="flex flex-col gap-2 items-start text-left">
                     <p className="text-[#d4d4d4] font-light font-mono text-xs lg:text-sm leading-relaxed max-w-xs lg:max-w-sm text-left">
-                      Lulusan S1 Teknik Informatika Universitas Pamulang
-                      dengan antusiasme tinggi untuk berkarier sebagai Data Analyst.
-                      Menguasai SQL, Python, serta perangkat visualisasi
-                      seperti Tableau dan Microsoft Excel.
+                      Lulusan S1 Teknik Informatika Universitas Pamulang dengan
+                      antusiasme tinggi untuk berkarier sebagai Data Analyst.
+                      Menguasai SQL, Python, Excel, serta perangkat visualisasi
+                      seperti Tableau, PowerBI dan Looker.
                     </p>
                   </div>
                 </div>

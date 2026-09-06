@@ -755,14 +755,33 @@ export default function PortfolioShowcase() {
                   </div>
                 )}
 
-                {selectedProject.link && (
-                  <a
-                    href={selectedProject.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-block w-full text-center px-6 py-3 rounded-full bg-black text-white text-sm font-medium hover:bg-black/80 transition-colors duration-200">
-                    Visit Project
-                  </a>
+                {/* Tombol aksi: Visit Project (utama) + Repository (sekunder/outline).
+                    Ditaruh dalam satu wrapper flex-col dengan gap supaya rapi
+                    apa pun kombinasi field yang tersedia (link saja, repo saja,
+                    atau keduanya). Repository diletakkan DI BAWAH Visit Project;
+                    tinggal tukar urutan dua blok ini kalau mau di ATAS. */}
+                {(selectedProject.link || selectedProject.repo) && (
+                  <div className="flex flex-col gap-3">
+                    {selectedProject.link && (
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-block w-full text-center px-6 py-3 rounded-full bg-black text-white text-sm font-medium hover:bg-black/80 transition-colors duration-200">
+                        Visit Project
+                      </a>
+                    )}
+
+                    {selectedProject.repo && (
+                      <a
+                        href={selectedProject.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="inline-flex items-center justify-center gap-2 w-full text-center px-6 py-3 rounded-full border border-black/15 text-black bg-[#ececec] text-sm font-medium hover:bg-black/15 transition-colors duration-200">
+                        Repository
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
             </motion.div>

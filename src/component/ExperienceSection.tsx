@@ -28,7 +28,7 @@ const experiences: ExperienceCardData[] = [
     ],
   },
   {
-    role: "Skripsi - Internet Of Things",
+    role: "Internet Of Things Developer",
     company: "Universitas Pamulang",
     period: "2025 - 2026",
     location: "Tangerang, Indonesia",
