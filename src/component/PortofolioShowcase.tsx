@@ -511,10 +511,10 @@ export default function PortfolioShowcase() {
                       transition: { duration: 0.25, ease: "easeOut" },
                     }}
                     whileTap={{ scale: 0.98 }}
-                    viewport={{ once: false, amount: 0.3 }}
+                    viewport={{ once: true, amount: 0.15 }}
                     transition={{
-                      duration: 0.5,
-                      delay: i * 0.1,
+                      duration: 0.4,
+                      delay: Math.min(i, 5) * 0.05,
                       ease: "easeOut",
                     }}
                     className="w-[85vw] max-w-[320px] sm:w-[300px] md:w-[360px] rounded-2xl overflow-hidden border border-white/10 bg-[#2d2d2d99] backdrop-blur-md flex flex-col text-left cursor-pointer transition-shadow duration-300 hover:shadow-[0_18px_30px_-12px_rgba(247,194,0,0.35)] flex-shrink-0">
@@ -777,7 +777,7 @@ export default function PortfolioShowcase() {
                         href={selectedProject.repo}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 w-full text-center px-6 py-3 rounded-full border border-black/15 text-black bg-[#ececec] text-sm font-medium hover:bg-black/15 transition-colors duration-200">
+                        className="inline-flex items-center justify-center gap-2 w-full text-center px-6 py-3 rounded-full border border-black/15 text-black text-sm font-medium hover:bg-black/5 transition-colors duration-200">
                         Repository
                       </a>
                     )}
