@@ -114,6 +114,20 @@ export const certificates: CertificateItem[] = [
     pdf: "/assets/certificate/BNSP-Pemrograman.pdf",
   },
   {
+    title: "Data Analyst: Fullstack Intensive Bootcamp",
+    issuer: "MySkill",
+    date: "2026",
+    link: null,
+    pdf: "/assets/certificate/Data_Analyst_MySkill_Bootcamp_Certificate.pdf",
+  },
+  {
+    title: "BNSP Preparation for Data Analyst",
+    issuer: "YEC",
+    date: "2026",
+    link: null,
+    pdf: "/assets/certificate/Data_Analyst_YEC.pdf",
+  },
+  {
     title: "Pivot Table In Microsoft Excel",
     issuer: "MySkill",
     date: "2026",
