@@ -121,6 +121,13 @@ export const certificates: CertificateItem[] = [
     pdf: "/assets/certificate/Data_Analyst_MySkill_Bootcamp_Certificate.pdf",
   },
   {
+    title: "Data Analyst: Final Project",
+    issuer: "MySkill",
+    date: "2026",
+    link: null,
+    pdf: "/assets/certificate/Sertifikat_Final_Project_Data_Analysis_MySkill.pdf",
+  },
+  {
     title: "BNSP Preparation for Data Analyst",
     issuer: "YEC",
     date: "2026",
