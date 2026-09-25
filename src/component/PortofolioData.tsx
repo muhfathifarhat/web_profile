@@ -18,26 +18,6 @@ export interface CertificateItem {
 
 export const projects: ProjectItem[] = [
   {
-    title: "Tracking Gps",
-    subtitle: "Web Dev & Internet of Things",
-    description:
-      "Rancang Bangun Sistem Pelacakan Lokasi Real-Time Berbasis IoT Menggunakan Arduino dan Modul GPS untuk Kendaraan.",
-    link: "https://gps-track.gt.tc", // contoh: ganti dengan URL project asli kamu
-    tags: ["C++", "PHP", "JavaScript", "mySQL", "Firebase", "TinyGPS"],
-    image: "/assets/project/tracking-gps.png",
-    repo: "https://github.com/muhfathifarhat/GPS_Tracker",
-  },
-  {
-    title: "Web Portofolio",
-    subtitle: "Web Dev",
-    description:
-      "Website portofolio yang menampilkan profil, pengalaman, dan proyek yang pernah dikerjakan.",
-    link: "", // contoh: ganti dengan URL project asli kamu
-    tags: ["React", "TypeScript", "Tailwind"],
-    image: "/assets/project/web-porto.png",
-    repo: "https://github.com/muhfathifarhat/web_profile",
-  },
-  {
     title: "BigQuery-Ecommerce",
     subtitle: "Data Analyst",
     description:
@@ -45,6 +25,16 @@ export const projects: ProjectItem[] = [
     link: "https://public.tableau.com/shared/W9F7T3JTG?:display_count=n&:origin=viz_share_link",
     tags: ["SQL", "Excel", "Tableau"],
     image: "/assets/project/bigquery-ecommerce.png",
+    repo: "https://github.com/muhfathifarhat/BigQuery-ecommerce",
+  },
+  {
+    title: "Toko-Sales",
+    subtitle: "Data Analyst",
+    description:
+      "Dashboard Analytics of Sales menyajikan ringkasan performa penjualan tiap tahun menggunakan filter secara komprehensif dan interaktif.",
+    link: "https://public.tableau.com/shared/W9F7T3JTG?:display_count=n&:origin=viz_share_link",
+    tags: ["Spread Sheet", "Looker"],
+    image: "/assets/project/Dashboard-Sales.png",
     repo: "https://github.com/muhfathifarhat/BigQuery-ecommerce",
   },
   {
@@ -96,6 +86,26 @@ export const projects: ProjectItem[] = [
     tags: ["SQL", "Bigquery"],
     image: "/assets/project/Clean-Jadwal-Kereta.png",
     repo: "https://github.com/muhfathifarhat/Data_Cleansing_Jadwal_Kereta",
+  },
+  {
+    title: "Tracking Gps",
+    subtitle: "Web Dev & Internet of Things",
+    description:
+      "Rancang Bangun Sistem Pelacakan Lokasi Real-Time Berbasis IoT Menggunakan Arduino dan Modul GPS untuk Kendaraan.",
+    link: "https://gps-track.gt.tc", // contoh: ganti dengan URL project asli kamu
+    tags: ["C++", "PHP", "JavaScript", "mySQL", "Firebase", "TinyGPS"],
+    image: "/assets/project/tracking-gps.png",
+    repo: "https://github.com/muhfathifarhat/GPS_Tracker",
+  },
+  {
+    title: "Web Portofolio",
+    subtitle: "Web Dev",
+    description:
+      "Website portofolio yang menampilkan profil, pengalaman, dan proyek yang pernah dikerjakan.",
+    link: "", // contoh: ganti dengan URL project asli kamu
+    tags: ["React", "TypeScript", "Tailwind"],
+    image: "/assets/project/web-porto.png",
+    repo: "https://github.com/muhfathifarhat/web_profile",
   },
   {
     title: "",
