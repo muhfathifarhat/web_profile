@@ -32,7 +32,7 @@ export const projects: ProjectItem[] = [
     subtitle: "Data Analyst",
     description:
       "Dashboard Analytics of Sales menyajikan ringkasan performa penjualan tiap tahun menggunakan filter secara komprehensif dan interaktif.",
-    link: "https://public.tableau.com/shared/W9F7T3JTG?:display_count=n&:origin=viz_share_link",
+    link: "https://datastudio.google.com/reporting/7954c661-d897-4d5c-b2ff-9752269fee4f",
     tags: ["Spread Sheet", "Looker"],
     image: "/assets/project/Dashboard-Sales.png",
     repo: "https://github.com/muhfathifarhat/BigQuery-ecommerce",
