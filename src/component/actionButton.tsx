@@ -5,7 +5,7 @@ export default function ActionButtons() {
     <div className="grid grid-cols-2 gap-2 lg:gap-3 w-full max-w-xs lg:max-w-sm">
       {/* Download CV */}
       <a
-        href="/Muhamad_Fathi_Farhat_CV.pdf"
+        href="/Muhamad_Fathi_Farhat_CV_EN.pdf"
         target="_blank"
         rel="noopener noreferrer"
         className="flex items-center justify-center gap-1.5 lg:gap-2 px-2 sm:px-3 py-2 lg:py-2.5 rounded-md border border-black/65 bg-[#e6e6e6] text-black text-[11px] lg:text-xs font-mono whitespace-nowrap cursor-pointer transition-all duration-200 hover:-translate-y-0.5 hover:shadow-md hover:bg-[#c9c9c9]">
