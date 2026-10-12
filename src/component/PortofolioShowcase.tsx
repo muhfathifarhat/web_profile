@@ -10,6 +10,7 @@ import {
   SiPython,
   SiMysql,
   SiPandas,
+  SiGithub,
 } from "react-icons/si";
 import {
   FileSpreadsheet,
@@ -18,6 +19,7 @@ import {
   ChevronLeft,
   ChevronRight,
   X,
+  ExternalLink,
 } from "lucide-react";
 import { Document, Page, pdfjs } from "react-pdf";
 import "react-pdf/dist/Page/AnnotationLayer.css";
@@ -711,11 +713,18 @@ export default function PortfolioShowcase() {
               <button
                 onClick={() => setSelectedProject(null)}
                 aria-label="Tutup"
-                className="absolute top-3 right-3 z-10 w-8 h-8 flex items-center justify-center rounded-full bg-white/90 hover:bg-white text-black shadow-md ring-1 ring-black/5 transition-colors duration-200">
+                className="absolute top-3 right-3 z-20 w-8 h-8 flex items-center justify-center rounded-full bg-white/90 hover:bg-white text-black shadow-md ring-1 ring-black/5 transition-colors duration-200">
                 <X size={16} strokeWidth={2.5} />
               </button>
 
-              <div className="w-full h-56 bg-[#E3E3E3] flex items-center justify-center">
+              {/* Area gambar: `relative` supaya tombol aksi bisa mengambang
+                  di pojok kanan bawah gambar. Tombol berupa lingkaran
+                  berisi ikon saja; saat di-hover (atau difokus lewat
+                  keyboard) tombol melebar menjadi pil dan menampilkan
+                  teks "Repository" / "View Project". Lebar teks dianimasikan
+                  lewat max-width (bukan width tetap) supaya tombol
+                  menyesuaikan panjang teksnya secara otomatis. */}
+              <div className="relative w-full h-56 bg-[#E3E3E3] flex items-center justify-center">
                 {selectedProject.image ? (
                   <img
                     src={selectedProject.image}
@@ -724,6 +733,40 @@ export default function PortfolioShowcase() {
                   />
                 ) : (
                   <span className="text-gray-500 text-sm">No Image</span>
+                )}
+
+                {(selectedProject.link || selectedProject.repo) && (
+                  <div className="absolute bottom-3 right-3 z-10 flex items-center gap-2">
+                    {selectedProject.repo && (
+                      <a
+                        href={selectedProject.repo}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Repository"
+                        title="Repository"
+                        className="group flex items-center h-11 px-[13px] rounded-full bg-white/90 text-black backdrop-blur-md shadow-lg ring-1 ring-black/10 hover:bg-white focus-visible:bg-white transition-colors duration-200">
+                        <SiGithub size={18} className="shrink-0" />
+                        <span className="max-w-0 opacity-0 overflow-hidden whitespace-nowrap text-sm font-medium transition-all duration-300 ease-out group-hover:max-w-[120px] group-hover:opacity-100 group-hover:ml-2 group-focus-visible:max-w-[120px] group-focus-visible:opacity-100 group-focus-visible:ml-2">
+                          Repository
+                        </span>
+                      </a>
+                    )}
+
+                    {selectedProject.link && (
+                      <a
+                        href={selectedProject.link}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="View Project"
+                        title="View Project"
+                        className="group flex items-center h-11 px-[13px] rounded-full bg-black text-white shadow-lg ring-1 ring-white/20 hover:bg-black/85 focus-visible:bg-black/85 transition-colors duration-200">
+                        <ExternalLink size={18} className="shrink-0" />
+                        <span className="max-w-0 opacity-0 overflow-hidden whitespace-nowrap text-sm font-medium transition-all duration-300 ease-out group-hover:max-w-[120px] group-hover:opacity-100 group-hover:ml-2 group-focus-visible:max-w-[120px] group-focus-visible:opacity-100 group-focus-visible:ml-2">
+                          View Project
+                        </span>
+                      </a>
+                    )}
+                  </div>
                 )}
               </div>
 
@@ -744,7 +787,7 @@ export default function PortfolioShowcase() {
                 </p>
 
                 {selectedProject.tags && selectedProject.tags.length > 0 && (
-                  <div className="flex flex-wrap gap-2 mb-6">
+                  <div className="flex flex-wrap gap-2">
                     {selectedProject.tags.map((tag) => (
                       <span
                         key={tag}
@@ -754,35 +797,6 @@ export default function PortfolioShowcase() {
                     ))}
                   </div>
                 )}
-
-                {/* Tombol aksi: Visit Project (utama) + Repository (sekunder/outline).
-                    Ditaruh dalam satu wrapper flex-col dengan gap supaya rapi
-                    apa pun kombinasi field yang tersedia (link saja, repo saja,
-                    atau keduanya). Repository diletakkan DI BAWAH Visit Project;
-                    tinggal tukar urutan dua blok ini kalau mau di ATAS. */}
-                {(selectedProject.link || selectedProject.repo) && (
-                  <div className="flex flex-col gap-3">
-                    {selectedProject.link && (
-                      <a
-                        href={selectedProject.link}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-block w-full text-center px-6 py-3 rounded-full bg-black text-white text-sm font-medium hover:bg-black/80 transition-colors duration-200">
-                        Visit Project
-                      </a>
-                    )}
-
-                    {selectedProject.repo && (
-                      <a
-                        href={selectedProject.repo}
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="inline-flex items-center justify-center gap-2 w-full text-center px-6 py-3 rounded-full border border-black/15 text-black text-sm font-medium hover:bg-black/5 transition-colors duration-200">
-                        Repository
-                      </a>
-                    )}
-                  </div>
-                )}
               </div>
             </motion.div>
           </motion.div>
@@ -790,19 +804,16 @@ export default function PortfolioShowcase() {
       </AnimatePresence>
 
       {/* Modal detail certificate -- render PDF langsung, dengan navigasi halaman.
-          PERBAIKAN TERBARU: tombol panah kiri/kanan sekarang di-posisikan
-          absolute relatif terhadap `certViewerRef` (jendela/window viewer
-          penuh), BUKAN lagi relatif terhadap div "inner" selebar
-          certDisplayWidth. Dengan begitu tombol selalu menempel di tepi
-          kiri/kanan jendela modal, berapa pun lebar PDF-nya (potret,
-          persegi, atau landscape sempit), alih-alih mengambang dekat tepi
-          kertas seperti sebelumnya.
+          Tombol panah kiri/kanan di-posisikan absolute relatif terhadap
+          `certViewerRef` (jendela/window viewer penuh), BUKAN relatif
+          terhadap div "inner" selebar certDisplayWidth. Dengan begitu
+          tombol selalu menempel di tepi kiri/kanan jendela modal, berapa
+          pun lebar PDF-nya (potret, persegi, atau landscape sempit).
 
           Untuk memastikan ikon panah benar-benar presisi di tengah
-          lingkaran tombol, dipakai `grid place-items-center` (bukan
-          flex items-center + justify-center) dan class `shrink-0` pada
-          ikon supaya SVG tidak pernah mengalami distorsi/pergeseran
-          sub-pixel akibat flex-basis. */}
+          lingkaran tombol, dipakai `grid place-items-center` dan class
+          `shrink-0` pada ikon supaya SVG tidak pernah mengalami distorsi
+          atau pergeseran sub-pixel akibat flex-basis. */}
       <AnimatePresence>
         {selectedCertificate && (
           <motion.div
